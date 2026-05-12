@@ -6,13 +6,15 @@ A collection of production Claude Cowork skills built for a digital marketing ag
 
 ## What This Is
 
-Claude Cowork lets you give Claude access to your business tools and then build "skills" — structured instructions that tell Claude exactly how to handle a specific task from start to finish. Think of each skill as a custom automation that Claude reads before acting.
+Claude Cowork lets you give Claude access to your business tools and then build "skills" structured instructions that tell Claude exactly how to handle a specific task from start to finish. Think of each skill as a custom automation that Claude reads before acting.
 
 This repo contains four skills actively used in production at a agency handling 50+ inbound leads per month across Upwork, LinkedIn, and website channels.
 
 ---
 
 ## Skills Included
+
+Note: Skill.md files contains examples of my previous clients, that can't be used as a pure prompt for any automation.
 
 | Skill | What It Does | Tools Used |
 |---|---|---|
@@ -34,7 +36,7 @@ skill-name/
 └── docs/             ← Supporting reference material
 ```
 
-The skill description (in the YAML frontmatter) is the trigger — it tells Claude when to activate the skill without being asked explicitly. The body contains the step-by-step process, hard rules, edge cases, and API call formats.
+The skill description (in the YAML frontmatter) is the trigger it tells Claude when to activate the skill without being asked explicitly. The body contains the step-by-step process, hard rules, edge cases, and API call formats.
 
 ---
 
@@ -42,7 +44,7 @@ The skill description (in the YAML frontmatter) is the trigger — it tells Clau
 
 **Folder:** `skills/lead-capture-crm/`
 
-Takes an inbound Upwork, LinkedIn, or website lead screenshot and runs the full intake pipeline automatically — no manual data entry.
+Takes an inbound Upwork, LinkedIn, or website lead screenshot and runs the full intake pipeline automatically no manual data entry.
 
 ### What Happens
 
@@ -66,9 +68,9 @@ With this skill: ~90 seconds
 
 ### Key Design Decisions
 
-- **No routing questions asked** — BDE assignment is fully automated using a profile-to-BDE lookup table baked into the skill
-- **Verbatim logging** — the client's exact message is always logged word for word, never summarised
-- **Dual reply format** — the AI generates both a long and a short version so the user can pick based on context
+- **No routing questions asked** BDE assignment is fully automated using a profile-to-BDE lookup table baked into the skill
+- **Verbatim logging** the client's exact message is always logged word for word, never summarised
+- **Dual reply format** the AI generates both a long and a short version so the user can pick based on context
 
 ---
 
@@ -76,7 +78,7 @@ With this skill: ~90 seconds
 
 **Folder:** `skills/cold-email-outreach/`
 
-When a lead goes quiet on Upwork or LinkedIn, this skill finds their email address, generates a personalised follow-up, and creates a Gmail draft — ready to send with one click.
+When a lead goes quiet on Upwork or LinkedIn, this skill finds their email address, generates a personalised follow-up, and creates a Gmail draft ready to send with one click.
 
 ### What Happens
 
@@ -91,10 +93,10 @@ When a lead goes quiet on Upwork or LinkedIn, this skill finds their email addre
 ### Rules Enforced By the Skill
 
 - Sender is always the Upwork/LinkedIn persona (e.g. "Kuldeep"), never the real name
-- No em dashes anywhere — caught before creating the draft
+- No em dashes anywhere caught before creating the draft
 - No signature at the bottom
 - Under 120 words total
-- Verdana 14px via HTML body — consistent formatting across all outreach
+- Verdana 14px via HTML body consistent formatting across all outreach
 - Logs which email source was used (Apollo verified / web search / pattern-guess)
 
 ### Apollo.io Integration Pattern
@@ -118,14 +120,14 @@ Researches any prospect using web search, LinkedIn, company data, and news — t
 
 Every brief covers 8 intelligence categories:
 
-1. **Pain point discovery** — specific, evidence-backed challenges
+1. **Pain point discovery** specific, evidence-backed challenges
 2. **Buying signals** — trigger events that indicate purchase readiness
-3. **Decision-making intelligence** — who controls the budget and how they buy
-4. **Tech stack** — current tools, integration needs, vendor signals
-5. **Personalization hooks** — recent posts, wins, shared context
+3. **Decision-making intelligence** who controls the budget and how they buy
+4. **Tech stack** current tools, integration needs, vendor signals
+5. **Personalization hooks** recent posts, wins, shared context
 6. **Value alignment** — maps each pain point to a specific service
-7. **Objection pre-emption** — top 2 objections with specific counter-language
-8. **Social proof** — relevant case studies and credibility bridges
+7. **Objection pre-emption** top 2 objections with specific counter-language
+8. **Social proof** relevant case studies and credibility bridges
 
 ### Final Deliverable
 
@@ -146,7 +148,7 @@ Every output section answers the question: "How does this help me close the deal
 
 **Folder:** `skills/n8n-workflow-automation/`
 
-Documents the patterns used to orchestrate multi-step n8n workflows from Claude — covering trigger types, execution polling, response extraction, and error handling.
+Documents the patterns used to orchestrate multi-step n8n workflows from Claude covering trigger types, execution polling, response extraction, and error handling.
 
 ### Workflows in Use
 
