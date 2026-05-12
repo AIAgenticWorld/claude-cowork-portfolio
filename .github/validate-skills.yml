@@ -1,0 +1,95 @@
+name: Validate Skill Files
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check all SKILL.md files have required frontmatter
+        run: |
+          echo "Checking SKILL.md files for required frontmatter..."
+          
+          FAILED=0
+          
+          for skill_file in skills/*/SKILL.md; do
+            echo "Checking: $skill_file"
+            
+            # Check for YAML frontmatter opening
+            if ! head -1 "$skill_file" | grep -q "^---$"; then
+              echo "FAIL: $skill_file is missing YAML frontmatter opening (---)"
+              FAILED=1
+              continue
+            fi
+            
+            # Check for 'name:' field
+            if ! grep -q "^name:" "$skill_file"; then
+              echo "FAIL: $skill_file is missing 'name:' field"
+              FAILED=1
+            fi
+            
+            # Check for 'description:' field
+            if ! grep -q "^description:" "$skill_file"; then
+              echo "FAIL: $skill_file is missing 'description:' field"
+              FAILED=1
+            fi
+            
+            echo "PASS: $skill_file"
+          done
+          
+          if [ $FAILED -ne 0 ]; then
+            echo "One or more SKILL.md files failed validation."
+            exit 1
+          fi
+          
+          echo "All SKILL.md files are valid."
+
+      - name: Check for em dashes in skill files
+        run: |
+          echo "Checking for em dashes in SKILL.md files..."
+          
+          FOUND=0
+          
+          for skill_file in skills/*/SKILL.md; do
+            if grep -P "\u2014" "$skill_file" > /dev/null 2>&1; then
+              echo "WARNING: Em dash found in $skill_file"
+              FOUND=1
+            fi
+          done
+          
+          if [ $FOUND -ne 0 ]; then
+            echo "Em dashes found — replace with plain hyphens."
+            exit 1
+          fi
+          
+          echo "No em dashes found."
+
+      - name: Check examples folder exists for each skill
+        run: |
+          echo "Checking that each skill has an examples folder..."
+          
+          FAILED=0
+          
+          for skill_dir in skills/*/; do
+            if [ ! -d "${skill_dir}examples" ]; then
+              echo "WARNING: ${skill_dir} has no examples/ folder"
+            fi
+          done
+          
+          echo "Examples check complete."
+
+      - name: List all skills
+        run: |
+          echo "Skills in this repository:"
+          for skill_dir in skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            echo "  - $skill_name"
+          done
