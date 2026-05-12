@@ -8,7 +8,7 @@ A collection of production Claude Cowork skills built for a digital marketing ag
 
 Claude Cowork lets you give Claude access to your business tools and then build "skills" — structured instructions that tell Claude exactly how to handle a specific task from start to finish. Think of each skill as a custom automation that Claude reads before acting.
 
-This repo contains four skills actively used in production at a digital marketing agency handling 50+ inbound leads per month across Upwork, LinkedIn, and website channels.
+This repo contains four skills actively used in production at a agency handling 50+ inbound leads per month across Upwork, LinkedIn, and website channels.
 
 ---
 
@@ -191,14 +191,6 @@ These skills are designed for Claude Cowork. To use them:
 3. Claude will read the skill descriptions and activate the right skill based on what you ask
 
 Each skill folder contains a `docs/setup.md` with the specific tool requirements and configuration notes for that skill.
-
----
-
-## Upwork Profile
-
-These skills were built and are maintained by a digital marketing specialist with experience in AI automation, CRM integration, and sales operations. Available for custom Claude Cowork skill development, n8n workflow automation, and MCP tool integration.
-
-[View Upwork Profile](https://www.upwork.com) <!-- replace with your profile URL -->
 
 ---
 
