@@ -1,6 +1,6 @@
 # Claude Cowork Skills Portfolio
 
-A collection of production Claude Cowork skills built for a digital marketing agency's sales and operations team. These skills connect Claude to real business tools — CRM, Gmail, n8n automation, Apollo.io, and more — replacing manual work with AI-driven workflows.
+A collection of production Claude Cowork skills built for a digital marketing agency's sales and operations team. These skills connect Claude to real business tools CRM, Gmail, n8n automation, Apollo.io, and more replacing manual work with AI-driven workflows.
 
 ---
 
