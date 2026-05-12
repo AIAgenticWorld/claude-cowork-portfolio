@@ -62,9 +62,9 @@ With this skill: ~90 seconds
 
 ### Tools Connected
 
-- `n8n MCP` — triggers the ClientJoy creation workflow and the Supervisor_Sales AI workflow
-- `Leads Conversation Manager` — logs all entries
-- `Leads Database` — for lookups on returning leads
+- `n8n MCP` triggers the ClientJoy creation workflow and the Supervisor_Sales AI workflow
+- `Leads Conversation Manager` logs all entries
+- `Leads Database` for lookups on returning leads
 
 ### Key Design Decisions
 
@@ -114,18 +114,18 @@ Single-step name-only lookups return empty stubs. The two-stage pattern is docum
 
 **Folder:** `skills/sales-intelligence-agent/`
 
-Researches any prospect using web search, LinkedIn, company data, and news — then outputs a structured sales battle plan with specific opening hooks, objection counters, and a multi-touch outreach sequence.
+Researches any prospect using web search, LinkedIn, company data, and news then outputs a structured sales battle plan with specific opening hooks, objection counters, and a multi-touch outreach sequence.
 
 ### Output Structure
 
 Every brief covers 8 intelligence categories:
 
 1. **Pain point discovery** specific, evidence-backed challenges
-2. **Buying signals** — trigger events that indicate purchase readiness
+2. **Buying signals** trigger events that indicate purchase readiness
 3. **Decision-making intelligence** who controls the budget and how they buy
 4. **Tech stack** current tools, integration needs, vendor signals
 5. **Personalization hooks** recent posts, wins, shared context
-6. **Value alignment** — maps each pain point to a specific service
+6. **Value alignment** maps each pain point to a specific service
 7. **Objection pre-emption** top 2 objections with specific counter-language
 8. **Social proof** relevant case studies and credibility bridges
 
@@ -161,7 +161,7 @@ Documents the patterns used to orchestrate multi-step n8n workflows from Claude 
 
 ### Key Patterns Documented
 
-- How to handle `type: "form"` vs `type: "chat"` triggers — they require different payload shapes
+- How to handle `type: "form"` vs `type: "chat"` triggers they require different payload shapes
 - How to poll for execution results using `get_execution` when workflows return `status: "waiting"`
 - How to extract nested response data from the n8n result object
 - How to handle timeouts (retry once, then fall back to manual)
@@ -193,9 +193,3 @@ These skills are designed for Claude Cowork. To use them:
 3. Claude will read the skill descriptions and activate the right skill based on what you ask
 
 Each skill folder contains a `docs/setup.md` with the specific tool requirements and configuration notes for that skill.
-
----
-
-## License
-
-MIT — use and adapt freely.
